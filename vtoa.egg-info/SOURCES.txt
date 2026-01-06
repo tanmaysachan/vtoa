@@ -1,0 +1,12 @@
+README.md
+pyproject.toml
+vtoa/__init__.py
+vtoa/cli.py
+vtoa/converter.py
+vtoa/player.py
+vtoa.egg-info/PKG-INFO
+vtoa.egg-info/SOURCES.txt
+vtoa.egg-info/dependency_links.txt
+vtoa.egg-info/entry_points.txt
+vtoa.egg-info/requires.txt
+vtoa.egg-info/top_level.txt

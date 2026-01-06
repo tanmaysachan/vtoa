@@ -1,0 +1,2 @@
+[console_scripts]
+vtoa = vtoa.cli:main
