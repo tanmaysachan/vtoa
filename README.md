@@ -18,13 +18,16 @@
        .:-+*#%@@@@@@@@%#*+-:.   
 ```
 
-## Installation
-
-### From PyPI
+## Quick Start
 
 ```bash
 pip install vtoa
+
+# Play an Instagram reel
+vtoa https://www.instagram.com/reel/DL9vInNsyrk/ --color
 ```
+
+## Installation
 
 ### From Source
 
@@ -51,7 +54,7 @@ python -m build
 pip install dist/vtoa-*.whl
 ```
 
-## Quick Start
+## Usage
 
 ### Command Line
 
