@@ -59,8 +59,7 @@ pip install dist/vtoa-*.whl
 # Play a local video
 vtoa video.mp4
 
-# Play from YouTube or Instagram URL
-vtoa "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+# Play from Instagram Reel URL
 vtoa "https://www.instagram.com/reel/xyz123/"
 
 # Enable colored ASCII output
@@ -69,7 +68,7 @@ vtoa video.mp4 --color
 # Specify output width
 vtoa video.mp4 --width 120
 
-# Force aspect ratio (9:16 for reels, 16:9 for videos)
+# Force aspect ratio (9:16 for reels)
 vtoa video.mp4 --aspect 9:16
 
 # Use block characters for denser output
@@ -137,7 +136,7 @@ usage: vtoa [-h] [-V] [-w WIDTH] [-H HEIGHT] [-p {detailed,simple,blocks}]
             [-c CHARS] [-a ASPECT] [-C] [-i] [-l] [-s] source
 
 positional arguments:
-  source                Video file path or URL (YouTube, Instagram)
+  source                Video file path or Instagram Reel URL
 
 options:
   -h, --help            Show this help message and exit
@@ -155,7 +154,7 @@ options:
 
 ## How It Works
 
-1. **Fetch** — Download video from URL (YouTube/Instagram) or read local file
+1. **Fetch** — Download video from Instagram Reel URL or read local file
 2. **Read** — OpenCV reads video frames
 3. **Resize** — Scale to fit terminal dimensions (preserving aspect ratio)
 4. **Map** — Map pixel brightness values to ASCII characters
@@ -164,9 +163,9 @@ options:
 
 ## Features
 
-- 🎬 Play local videos or stream from YouTube/Instagram URLs
+- 🎬 Play local videos or stream from Instagram Reel URLs
 - 🎨 Full color support using ANSI 24-bit true color
-- 📐 Automatic aspect ratio detection (9:16 for reels, 16:9 for videos)
+- 📐 Automatic aspect ratio detection (9:16 for reels)
 - ⚡ Smooth playback with frame timing
 - 🔧 Customizable character sets and presets
 - 🔁 Loop mode for continuous playback
