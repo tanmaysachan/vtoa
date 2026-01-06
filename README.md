@@ -1,6 +1,7 @@
 # vtoa
 
 **Video to ASCII** — Convert any video to ASCII art playable in your terminal.
+[Fully vibecoded btw]
 
 ```
 @@@@@@@@@@%%%%%%%%%%%%%@@@@@@@@@
