@@ -20,14 +20,35 @@
 
 ## Installation
 
+### From PyPI
+
 ```bash
+pip install vtoa
+```
+
+### From Source
+
+Clone the repository and install in development mode:
+
+```bash
+git clone https://github.com/tanmaysachan/vtoa.git
+cd vtoa
 pip install -e .
 ```
 
-Or install dependencies directly:
+### Building from Source
+
+To build the package yourself:
 
 ```bash
-pip install opencv-python numpy
+# Install build tools
+pip install build
+
+# Build the package
+python -m build
+
+# Install the built wheel
+pip install dist/vtoa-*.whl
 ```
 
 ## Quick Start
@@ -35,11 +56,21 @@ pip install opencv-python numpy
 ### Command Line
 
 ```bash
-# Play a video with default settings
+# Play a local video
 vtoa video.mp4
+
+# Play from YouTube or Instagram URL
+vtoa "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+vtoa "https://www.instagram.com/reel/xyz123/"
+
+# Enable colored ASCII output
+vtoa video.mp4 --color
 
 # Specify output width
 vtoa video.mp4 --width 120
+
+# Force aspect ratio (9:16 for reels, 16:9 for videos)
+vtoa video.mp4 --aspect 9:16
 
 # Use block characters for denser output
 vtoa video.mp4 --preset blocks
@@ -103,10 +134,10 @@ print(ascii_art)
 
 ```
 usage: vtoa [-h] [-V] [-w WIDTH] [-H HEIGHT] [-p {detailed,simple,blocks}]
-            [-c CHARS] [-i] [-l] [-s] video
+            [-c CHARS] [-a ASPECT] [-C] [-i] [-l] [-s] source
 
 positional arguments:
-  video                 Path to the video file
+  source                Video file path or URL (YouTube, Instagram)
 
 options:
   -h, --help            Show this help message and exit
@@ -115,6 +146,8 @@ options:
   -H, --height HEIGHT   Output height in characters
   -p, --preset PRESET   Character preset (detailed/simple/blocks)
   -c, --chars CHARS     Custom character set (dark to light)
+  -a, --aspect ASPECT   Force aspect ratio (e.g., 16:9, 9:16, 1:1)
+  -C, --color           Enable colored ASCII output (requires true color terminal)
   -i, --invert          Invert brightness mapping
   -l, --loop            Loop the video
   -s, --no-status       Hide the status bar
@@ -122,17 +155,28 @@ options:
 
 ## How It Works
 
-1. **Read** — OpenCV reads video frames
-2. **Grayscale** — Convert each frame to grayscale
-3. **Resize** — Scale to fit terminal dimensions (adjusting for character aspect ratio)
+1. **Fetch** — Download video from URL (YouTube/Instagram) or read local file
+2. **Read** — OpenCV reads video frames
+3. **Resize** — Scale to fit terminal dimensions (preserving aspect ratio)
 4. **Map** — Map pixel brightness values to ASCII characters
-5. **Display** — Render frames with proper timing to maintain video speed
+5. **Colorize** — Apply ANSI 24-bit true color codes (optional)
+6. **Display** — Render frames with proper timing to maintain video speed
+
+## Features
+
+- 🎬 Play local videos or stream from YouTube/Instagram URLs
+- 🎨 Full color support using ANSI 24-bit true color
+- 📐 Automatic aspect ratio detection (9:16 for reels, 16:9 for videos)
+- ⚡ Smooth playback with frame timing
+- 🔧 Customizable character sets and presets
+- 🔁 Loop mode for continuous playback
 
 ## Requirements
 
 - Python 3.8+
 - OpenCV (`opencv-python`)
 - NumPy
+- yt-dlp (for URL support)
 
 ## License
 
