@@ -52,12 +52,16 @@ coverage.xml
 
 # Environments
 .env
-.venv
+.venv/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Build artifacts
+dist/
+build/
 
 # IDE
 .idea/
